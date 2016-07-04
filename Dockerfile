@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y \
 RUN git clone https://github.com/phalcon/cphalcon.git /usr/local/src/cphalcon \
     && cd /usr/local/src/cphalcon/build \
     && ./install \
-    && docker-php-ext-install -j$(nproc) phalcon
+    && docker-php-ext-enable -j$(nproc) phalcon
 
 RUN rm -rf /usr/local/src/cphalcon \
     && apt-get clean
