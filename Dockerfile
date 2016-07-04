@@ -13,8 +13,9 @@ RUN git clone https://github.com/phalcon/zephir.git /usr/local/src/zephir \
     && chmod +x /usr/local/src/zephir
 
 RUN git clone https://github.com/phalcon/cphalcon.git /usr/local/src/cphalcon \
-    && cd /usr/local/src/cphalcon
-
+    && cd /usr/local/src/cphalcon \
+    && ../zephir/bin/zephir install \
+    && docker-php-ext-install -j$(nproc) phalcon
 
 RUN rm -rf /usr/local/src/cphalcon ;\
     rm -rf /usr/local/src/zephir ;\
